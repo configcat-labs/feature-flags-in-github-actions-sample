@@ -36,7 +36,7 @@ jobs:
         uses: lycheeverse/lychee-action@v2.8.0
   build:
     needs: build-deploy-check
-    if: needs.build-deploy-check.outputs.build-deploy-enabled == 'true'
+    if: needs.build-deploy-check.outputs.build-deploy-enabled == 'true' && needs.build-deploy-check.outputs.build-deploy-enabled != ''
     runs-on: ubuntu-latest
     steps:
       - name: Checkout your repository using git
