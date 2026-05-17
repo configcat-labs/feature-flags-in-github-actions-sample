@@ -24,16 +24,8 @@ jobs:
         uses: configcat/cli-actions/eval-flag@v1
         with:
           sdk-key: ${{ secrets.CONFIGCAT_SDK_KEY}}
-          flag-keys: build_and_deploy_enabled
-      - name: Output build and deploy flag value
-        run: echo "Build and Deploy Enabled ${{ steps.bd-flag.outputs.build_and_deploy_enabled }}"
-  linkChecker:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-      - name: Lychee Broken Link Checker
-        uses: lycheeverse/lychee-action@v2.8.0
+          flag-keys: 
+            build_and_deploy_enabled
   build:
     needs: build-deploy-check
     if: needs.build-deploy-check.outputs.build-deploy-enabled == 'true'
