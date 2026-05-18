@@ -28,6 +28,7 @@ jobs:
           sdk-key: ${{ secrets.CONFIGCAT_SDK_KEY}}
           flag-keys: 
             build_deploy_enabled
+
   build:
     needs: build-deploy-check
     if: needs.build-deploy-check.outputs.build-deploy-enabled == 'true'
