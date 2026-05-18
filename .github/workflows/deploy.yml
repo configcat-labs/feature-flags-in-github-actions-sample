@@ -17,7 +17,7 @@ jobs:
       CONFIGCAT_API_USER: ${{ secrets.CONFIGCAT_API_USER }}
       CONFIGCAT_API_PASS: ${{ secrets.CONFIGCAT_API_PASS }}
     outputs:
-      build-deploy-enabled: ${{ steps.bd-flag.outputs.build_and_deploy_enabled }}
+      build-deploy-enabled: ${{ steps.bd-flag.outputs.build_deploy_enabled }}
     steps:
       - name: Check build and deploy flag
         id: bd-flag
@@ -25,7 +25,7 @@ jobs:
         with:
           sdk-key: ${{ secrets.CONFIGCAT_SDK_KEY}}
           flag-keys: 
-            build_and_deploy_enabled
+            build_deploy_enabled
   build:
     needs: build-deploy-check
     if: needs.build-deploy-check.outputs.build-deploy-enabled == 'true'
